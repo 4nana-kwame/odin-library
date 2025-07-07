@@ -12,6 +12,7 @@ function Book(title, author, numOfPages, readStatus) {
 
 function addBookToLibrary(title, author, numOfPages, readStatus) {
   const book = new Book(title, author, numOfPages, readStatus);
+  book['bookId'] = crypto.randomUUID();
 
   myLibrary.push(book);
 }
