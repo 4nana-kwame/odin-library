@@ -16,3 +16,9 @@ function addBookToLibrary(title, author, numOfPages, readStatus) {
 
   myLibrary.push(book);
 }
+
+function displayBook() {
+  for (let book of myLibrary) {
+    
+  }
+}
