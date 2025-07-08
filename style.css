@@ -53,10 +53,61 @@ header .description {
   border: none;
   border-radius: 15px;
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .add:hover {
   background-color: #e0a04b;
   color: #fff;
+}
+
+#dialog {
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 350px;
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+}
+
+label {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 5px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  border: 1px solid #b3b0b0;
+  border-radius: 5px;
+}
+
+input:focus {
+  outline: none;
+}
+
+#dialog button {
+  padding: 10px;
+  margin: 5px;
+  width: 40%;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.entry {
+  background-color: #799b8d;
+  color: #fffcf4;
+}
+
+.cancel {
+  background-color: #ff6347;
+  color: #fffcf4;
+}
+
+dialog::backdrop {
+  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.125);
 }
