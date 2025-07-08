@@ -1,3 +1,6 @@
+const dialog = document.querySelector('#dialog');
+const addNewBook = document.querySelector('.add');
+const cancel = document.querySelector('.cancel');
 const myLibrary = [];
 
 function Book(title, author, numOfPages, readStatus) {
@@ -22,3 +25,12 @@ function displayBook() {
     
   }
 }
+
+addNewBook.addEventListener('click', () => {
+  dialog.showModal();
+});
+
+cancel.addEventListener('click', (event) => {
+  event.preventDefault();
+  dialog.close();
+});
