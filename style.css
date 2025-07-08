@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /*Image owner - Ricky Esquivel*/
+  background: url('images/library-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #fff;
+  width: 100%;
+}
+
+.container {
+  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.125);
+  width: 100vw;
+  height: 100vh;
+}
+
+header {
+  padding: 20px;
+}
+
+header .title,
+header .description {
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 1.2rem;
+}
