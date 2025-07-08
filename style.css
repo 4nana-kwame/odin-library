@@ -1,4 +1,6 @@
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -17,9 +19,9 @@ body {
 
 .container {
   backdrop-filter: blur(5px);
-  background: rgba(255, 255, 255, 0.125);
-  width: 100vw;
-  height: 100vh;
+  background: rgba(255, 255, 255, 0.01);
+  width: 100%;
+  height: 100%;
 }
 
 header {
@@ -68,18 +70,25 @@ header .description {
   padding: 20px;
   border: none;
   border-radius: 10px;
+  margin-top: 100px;
+}
+
+.form-title {
+  margin-bottom: 15px;
+  color: #050542;
 }
 
 label {
   display: block;
   font-size: 1.1rem;
   margin-bottom: 5px;
+  color: #050542;
 }
 
 input {
   padding: 5px;
   font-size: 1rem;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   border: 1px solid #b3b0b0;
   border-radius: 5px;
 }
@@ -98,8 +107,16 @@ input:focus {
 }
 
 .entry {
-  background-color: #799b8d;
+  background-color: #38946e;
   color: #fffcf4;
+}
+
+.entry:hover {
+  background-color: #025532;
+}
+
+.entry:active {
+  background-color: #38946e;
 }
 
 .cancel {
@@ -107,7 +124,111 @@ input:focus {
   color: #fffcf4;
 }
 
+.cancel:hover {
+  background-color: #8a1702;
+}
+
+.cancel:active {
+  background-color: #ff6347;
+}
+
 dialog::backdrop {
   backdrop-filter: blur(5px);
   background: rgba(255, 255, 255, 0.125);
+}
+
+.books-container {
+  padding: 20px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+.book {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  background: rgba(255, 255, 255, 0.125);
+  border-radius: 10px;
+  color: #03031b;
+  font-weight: 900;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.book:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8);
+}
+
+.book-title,
+.book-author,
+.book-pages,
+.read,
+.not-read {
+  margin-bottom: 15px;
+}
+
+.book-title {
+  font-size: 2rem;
+}
+
+.book-author {
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.read,
+.not-read {
+  text-align: center;
+  border-radius: 5px;
+}
+
+.read {
+  width: 80px;
+  background-color: #9ee9a8;
+  padding: 5px;
+  color: #0daf22;
+}
+
+.not-read {
+  width: 90px;
+  padding: 5px;
+  color: #ff6347;
+  background-color: #f3cac3;
+}
+
+.read::before {
+  content: "✓";
+}
+
+.not-read::before {
+  content: "○";
+}
+
+.toggle-read-status,
+.remove-book {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 0.9rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.toggle-read-status {
+  background-color: #8c92ac;
+  color: #0d2baf;
+}
+
+.remove-book {
+  background-color: #c99a9a;
+  color: #8f1904;
+}
+
+button {
+  font-family: inherit;
 }
