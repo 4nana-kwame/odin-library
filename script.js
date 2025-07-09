@@ -35,8 +35,10 @@ function displayBook() {
     const readStatus = document.createElement('div');
     btnContainer.classList.add('btn-container');
     const toggleReadStatus = document.createElement('button');
+    toggleReadStatus.setAttribute('data-id', 'change-status');
     toggleReadStatus.classList.add('toggle-read-status');
     const removeBook = document.createElement('button');
+    removeBook.setAttribute('data-id', 'remove');
     removeBook.classList.add('remove-book');
 
     bookTitle.textContent = book.title;
@@ -53,6 +55,31 @@ function displayBook() {
       readStatus.textContent = ' Not read';
       toggleReadStatus.textContent = 'Mark as read';
     }
+
+    btnContainer.addEventListener('click', function (event) {
+      const target = event.target.dataset.id;
+
+      if (!target) {
+        console.log(`Didn't click on a button.`);
+        return;
+      }
+
+      if (target === 'change-status') {
+        if (toggleReadStatus.textContent === 'Mark as read') {
+          readStatus.classList.remove('not-read');
+          readStatus.classList.add('read');
+          readStatus.textContent = ' Read';
+          toggleReadStatus.textContent = 'Mark as unread';
+        } else {
+          readStatus.classList.remove('read');
+          readStatus.classList.add('not-read');
+          readStatus.textContent = ' Not read';
+          toggleReadStatus.textContent = 'Mark as read';
+        }
+      } else if (target === 'remove') {
+        booksContainer.removeChild(bookCard);
+      }
+    });
 
     bookCard.appendChild(bookTitle);
     bookCard.appendChild(bookAuthor);
