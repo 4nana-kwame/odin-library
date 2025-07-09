@@ -75,9 +75,11 @@ cancel.addEventListener('click', (event) => {
 });
 
 // Sample books
-addBookToLibrary('The Way of Kings', 'Brandon Sanderson', 1093, true);
+addBookToLibrary('The Way Of Kings', 'Brandon Sanderson', 1093, true);
 addBookToLibrary('Red Rising', 'Pierce Brown', 353, false);
-addBookToLibrary('Shadows of self', 'Brandon Sanderson', 375, true);
-addBookToLibrary('The Sword of Kaigen', 'M.L. Wang', 339, false);
+addBookToLibrary('Shadows Of self', 'Brandon Sanderson', 375, true);
+addBookToLibrary('The Sword Of Kaigen', 'M.L. Wang', 339, false);
+addBookToLibrary('The Hunger Games', 'Suzanne Collins', 374, true);
+addBookToLibrary('Words Of Radiance', 'Brandon Sanderson', 1300, true);
 
 displayBook();
