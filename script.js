@@ -2,6 +2,12 @@ const dialog = document.querySelector('#dialog');
 const addNewBook = document.querySelector('.add');
 const cancel = document.querySelector('.cancel');
 const booksContainer = document.querySelector('.books-container');
+const title = document.querySelector('#title');
+const author = document.querySelector('#author');
+const pages = document.querySelector('#pages');
+const checkbox = document.querySelector('#read-status');
+const dialogAddBtn = document.querySelector('.entry');
+const inputs = document.querySelectorAll(`input[data-id='check-falsy']`);
 const myLibrary = [];
 
 function Book(title, author, numOfPages, readStatus) {
@@ -60,7 +66,6 @@ function displayBook() {
       const target = event.target.dataset.id;
 
       if (!target) {
-        console.log(`Didn't click on a button.`);
         return;
       }
 
@@ -98,8 +103,59 @@ addNewBook.addEventListener('click', () => {
 
 cancel.addEventListener('click', (event) => {
   event.preventDefault();
+  clearForm();
   dialog.close();
 });
+
+function clearForm() {
+  inputs.forEach((input) => {
+    input.value = '';
+    input.style.borderColor = '#b3b0b0';
+  });
+}
+
+function validateAndCleanInputValues(title, author, pages, status) {
+  for (let input of inputs) {
+    if (!input.value) {
+      input.style.borderColor = 'tomato';
+      return;
+    }
+  }
+
+  const titleArray = [];
+  const authorArray = [];
+  const cleanTitle = title.trim().toLowerCase().split(' ');
+  const cleanAuthor = author.trim().toLowerCase().split(' ');
+
+  cleanTitle.forEach((value) => {
+    const newValueFormat = value.slice(0, 1).toUpperCase() + value.slice(1);
+
+    titleArray.push(newValueFormat);
+  });
+
+  cleanAuthor.forEach((value) => {
+    const newValueFormat = value.slice(0, 1).toUpperCase() + value.slice(1);
+
+    authorArray.push(newValueFormat);
+  });
+
+  const newTitleFormat = titleArray.join(' ');
+  const newAuthorFormat = authorArray.join(' ');
+  const pagesToNumber = Number(pages);
+  status = checkbox.checked ? true : false;
+
+  addBookToLibrary(newTitleFormat, newAuthorFormat, pagesToNumber, status);
+}
+
+  dialogAddBtn.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    validateAndCleanInputValues(title.value, author.value, pages.value, checkbox);
+
+    displayBook();
+    clearForm();
+    dialog.close();
+  });
 
 // Sample books
 addBookToLibrary('The Way Of Kings', 'Brandon Sanderson', 1093, true);
