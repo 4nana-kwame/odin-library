@@ -85,6 +85,7 @@ function displayBook() {
         }
       } else if (target === 'remove') {
         booksContainer.removeChild(bookCard);
+        removeBookId(book.bookId);
       }
     });
 
@@ -96,6 +97,15 @@ function displayBook() {
     btnContainer.appendChild(removeBook);
     bookCard.appendChild(btnContainer);
     booksContainer.appendChild(bookCard);
+  }
+}
+
+function removeBookId(id) {
+  const index = myLibrary.findIndex(item => item.bookId === id);
+
+  if (index !== -1) {
+    myLibrary.splice(index, 1);
+    displayBook();
   }
 }
 
