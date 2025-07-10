@@ -28,6 +28,8 @@ function addBookToLibrary(title, author, numOfPages, readStatus) {
 }
 
 function displayBook() {
+  booksContainer.innerHTML = '';
+
   for (let book of myLibrary) {
     const bookCard = document.createElement('div');
     bookCard.classList.add('book');
@@ -145,17 +147,18 @@ function validateAndCleanInputValues(title, author, pages, status) {
   status = checkbox.checked ? true : false;
 
   addBookToLibrary(newTitleFormat, newAuthorFormat, pagesToNumber, status);
+
+  displayBook();
 }
 
-  dialogAddBtn.addEventListener('click', function (event) {
-    event.preventDefault();
+dialogAddBtn.addEventListener('click', function (event) {
+  event.preventDefault();
 
     validateAndCleanInputValues(title.value, author.value, pages.value, checkbox);
 
-    displayBook();
     clearForm();
     dialog.close();
-  });
+});
 
 // Sample books
 addBookToLibrary('The Way Of Kings', 'Brandon Sanderson', 1093, true);
