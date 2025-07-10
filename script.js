@@ -122,6 +122,7 @@ cancel.addEventListener('click', (event) => {
 function clearForm() {
   inputs.forEach((input) => {
     input.value = '';
+    checkbox.checked = false;
     input.style.borderColor = '#b3b0b0';
   });
 }
