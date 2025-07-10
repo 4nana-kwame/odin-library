@@ -20,6 +20,10 @@ function Book(title, author, numOfPages, readStatus) {
   }
 }
 
+Book.prototype.toggleReadStatus = function () {
+  this.readStatus = !this.readStatus;
+};
+
 function addBookToLibrary(title, author, numOfPages, readStatus) {
   const book = new Book(title, author, numOfPages, readStatus);
   book['bookId'] = crypto.randomUUID();
@@ -72,17 +76,8 @@ function displayBook() {
       }
 
       if (target === 'change-status') {
-        if (toggleReadStatus.textContent === 'Mark as read') {
-          readStatus.classList.remove('not-read');
-          readStatus.classList.add('read');
-          readStatus.textContent = ' Read';
-          toggleReadStatus.textContent = 'Mark as unread';
-        } else {
-          readStatus.classList.remove('read');
-          readStatus.classList.add('not-read');
-          readStatus.textContent = ' Not read';
-          toggleReadStatus.textContent = 'Mark as read';
-        }
+        book.toggleReadStatus();
+        displayBook();
       } else if (target === 'remove') {
         booksContainer.removeChild(bookCard);
         removeBookId(book.bookId);
