@@ -19,7 +19,7 @@ This is a simple web application that allows users to manage a personal book col
 - UI updates dynamically based on the current library state.
 - Books have unique `bookId` values generated using `crypto.randomUUID()`.
 
-Technologies used
+# Technologies used
 - HTML
 - CSS
 - JavaScript
