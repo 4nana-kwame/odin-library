@@ -10,19 +10,22 @@ const dialogAddBtn = document.querySelector('.entry');
 const inputs = document.querySelectorAll(`input[data-id='check-falsy']`);
 const myLibrary = [];
 
-function Book(title, author, numOfPages, readStatus) {
+class Book {
+  constructor (title, author, numOfPages, readStatus) {
   this.title = title;
   this.author = author;
   this.numOfPages = numOfPages;
   this.readStatus = readStatus;
-  this.info = function () {
+  }
+
+  info () {
     return `${this.title} by ${this.author}, ${this.numOfPages} pages, ${this.readStatus}.`;
   }
-}
 
-Book.prototype.toggleReadStatus = function () {
-  this.readStatus = !this.readStatus;
-};
+  toggleReadStatus () {
+    this.readStatus = !this.readStatus;
+  }
+}
 
 function addBookToLibrary(title, author, numOfPages, readStatus) {
   const book = new Book(title, author, numOfPages, readStatus);
